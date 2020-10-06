@@ -214,7 +214,7 @@
 
 
   <body onload="load_data()" style="padding-top: 0px;">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
       <a class="navbar-brand" href="#">ALFWorld </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -225,10 +225,12 @@
          <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
          <a class="nav-item nav-link" href="https://arxiv.org/abs/1912.01734" 
             target="_blank" onclick="captureOutboundLink('https://arxiv.org/abs/1912.01734');">Paper</a>
+<!--
          <a class="nav-item nav-link" href="https://github.com/askforalfred/alfred/tree/master/data" 
             target="_blank" onclick="captureOutboundLink('https://github.com/askforalfred/alfred/tree/master/data');">Data</a>
          <a class="nav-item nav-link" href="https://github.com/askforalfred/alfred" 
             target="_blank" onclick="captureOutboundLink('https://github.com/askforalfred/alfred');":>Code</a>
+-->
         </div>
       </div>
     </nav>
@@ -243,26 +245,24 @@
       <h6>
       <table>
       <tr>
-      <td width=200><a href="https://mohitshridhar.com/" target="_blank" onclick="captureOutboundLink('https://mohitshridhar.com/');">Mohit Shridhar</a></td>
-      <td width=200><a href="https://jessethomason.com/" target="_blank" onclick="captureOutboundLink('https://jessethomason.com/');">Jesse Thomason</a></td>
-      <td width=200><a href="https://homes.cs.washington.edu/~xkcd/" target="_blank" onclick="captureOutboundLink('https://homes.cs.washington.edu/~xkcd/');">Daniel Gordon</a></td>
-      <td width=200><a href="https://yonatanbisk.com/" target="_blank" onclick="captureOutboundLink('https://yonatanbisk.com/');">Yonatan Bisk</a></td>
+      <td width=250><a href="https://mohitshridhar.com/" target="_blank" onclick="captureOutboundLink('https://mohitshridhar.com/');">Mohit Shridhar</a></td>
+      <td width=250><a href="https://www.microsoft.com/en-us/research/people/eryua/" target="_blank" onclick="captureOutboundLink('https://www.microsoft.com/en-us/research/people/eryua/');">Xingdi (Eric) Yuan</a></td>
+      <td width=250><a href="https://www.microsoft.com/en-us/research/people/macote/" target="_blank" onclick="captureOutboundLink('https://www.microsoft.com/en-us/research/people/macote/');">Marc-Alexandre Côté</a></td>
       </tr>
       <tr>
-      <td><a href="https://allenai.org/team.html" target="_blank" onclick="captureOutboundLink('https://allenai.org/team.html');">Winson Han</a></td>
-      <td><a href="http://roozbehm.info/" target="_blank" onclick="captureOutboundLink('http://roozbehm.info/');">Roozbeh Mottaghi</a></td>
-      <td><a href="https://www.cs.washington.edu/people/faculty/lsz" target="_blank" onclick="captureOutboundLink('https://www.cs.washington.edu/people/faculty/lsz');">Luke Zettlemoyer</a></td>
-      <td><a href="https://homes.cs.washington.edu/~fox/" target="_blank" onclick="captureOutboundLink('https://homes.cs.washington.edu/~fox/');">Dieter Fox</a><br>
+      <td><a href="https://yonatanbisk.com/" target="_blank" onclick="captureOutboundLink('https://yonatanbisk.com/');">Yonatan Bisk</a></td>
+      <td><a href="https://www.microsoft.com/en-us/research/people/adtrisch/" target="_blank" onclick="captureOutboundLink('https://www.microsoft.com/en-us/research/people/adtrisch/');">&nbsp; Adam Trischler</a></td>
+      <td><a href="https://www.microsoft.com/en-us/research/people/mahauskn/" target="_blank" onclick="captureOutboundLink('https://www.microsoft.com/en-us/research/people/mahauskn/');">Matthew Hausknecht</a></td>
       </tr></table>
       </h6>
 
-      <p> <b>ALFRED</b> (<b>A</b>ction <b>L</b>earning <b>F</b>rom <b>R</b>ealistic <b>E</b>nvironments and <b>D</b>irectives), is a new benchmark for learning a mapping from natural language instructions and egocentric vision to sequences of actions for household tasks.  Long composition rollouts with non-reversible state changes are among  the  phenomena  we  include  to  shrink  the  gap  between  research  benchmarks  and  real-world  applications.</p>
+      <p> <strong>ALFWorld </strong>contains interactive TextWorld&nbsp;environments (Côté et. al) that parallel embodied worlds in the ALFRED  dataset (Shridhar et. al). The aligned environments allow agents to reason and learn policies in an abstract text space before transfering them to embodied environments.&nbsp; &nbsp;&nbsp;</p>
       <p>
-        <a class="btn btn-primary btn-lg homeButton" href="https://arxiv.org/abs/1912.01734" 
+        <a class="btn btn-success btn-lg homeButton" href="https://arxiv.org/abs/1912.01734" 
             role="button" target="_blank" onclick="captureOutboundLink('https://arxiv.org/abs/1912.01734');">Paper on ArXiv&raquo;</a> 
-        <a class="btn btn-primary btn-lg homeButton" href="https://github.com/askforalfred/alfred" 
+        <a class="btn btn-success btn-lg homeButton" href="https://github.com/askforalfred/alfred" 
             role="button" target="_blank" onclick="captureOutboundLink('https://github.com/askforalfred/alfred');">Code&raquo;</a>
-        <a class="btn btn-primary btn-lg homeButton" href="https://ai2thor.allenai.org/ithor/demo/"
+        <a class="btn btn-success btn-lg homeButton" href="https://ai2thor.allenai.org/ithor/demo/"
             role="button" target="_blank" onclick="captureOutboundLink('https://ai2thor.allenai.org/ithor/demo/');">ALFRED&raquo;</a>
       </p>
 
@@ -340,7 +340,7 @@
       <img src="images/nvidia.jpg" class="groupLogo">
   </div>
   <br>
-  <p>Questions or issues?  Contact <a href="mailto:askforalfred@googlegroups.com">askforalfred@googlegroups.com</a></p>
+  <p>Questions or issues?  Contact <a href="https://mohitshridhar.com/">Mohit Shridhar</a></p>.
 </footer>
 </body>
 </html>
