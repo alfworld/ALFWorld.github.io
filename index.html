@@ -256,7 +256,7 @@
       </tr></table>
       </h6>
 
-      <p> <strong>ALFWorld </strong>contains interactive TextWorld&nbsp;environments (Côté et. al) that parallel embodied worlds in the ALFRED  dataset (Shridhar et. al). The aligned environments allow agents to reason and learn high-level policies in an abstract text space before solving tasks in embodied&nbsp;environments through low-level actuation.&nbsp; &nbsp;</p>
+      <p> <strong>ALFWorld </strong>contains interactive TextWorld&nbsp;environments (Côté et. al) that parallel embodied worlds in the ALFRED  dataset (Shridhar et. al). The aligned environments allow agents to reason and learn high-level policies in an abstract  space before solving tasks in embodied&nbsp; through low-level actuation.&nbsp; &nbsp;</p>
       <p>
         <a class="btn btn-info btn-lg homeButton" href="https://arxiv.org/abs/1912.01734" 
             role="button" target="_blank" onclick="captureOutboundLink('https://arxiv.org/abs/1912.01734');">Paper on ArXiv&raquo;</a> 
@@ -270,28 +270,26 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-6 d-flex justify-content-right">
-     <iframe width="560" height="315" id="ytVid" src="https://www.youtube.com/embed/1XoRLNmXffo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="col-sm-4 d-flex justify-content-md-center">
+     <iframe width="300" height="300" id="ytVid" src="https://ai2-vision-alfred-data-explorer.s3-us-west-2.amazonaws.com/look_at_obj_in_light-AlarmClock-None-DeskLamp-302/trial_T20190908_192756_298295/video.mp4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
-    <div class="col-sm-6 d-flex justify-content-left">
+    <div class="col-sm-6 d-flex justify-content-left col-xl-8">
       <div class="card bg-light">
         <div class="card-body">
-          <p class="card-text">
-            <code id="bib"><font color="black">
-                @inproceedings{ALFRED20,<br>
-                &nbsp;&nbsp;title&nbsp;={{ALFRED: A Benchmark for Interpreting Grounded <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instructions for Everyday Tasks}},<br>
-                &nbsp;&nbsp;author={Mohit Shridhar and Jesse Thomason and<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Daniel Gordon and Yonatan Bisk and<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Winson Han and Roozbeh Mottaghi and<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Luke Zettlemoyer and Dieter Fox},<br>
-                &nbsp;&nbsp;booktitle&nbsp;=&nbsp;{The IEEE Conference on Computer Vision <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and Pattern Recognition (CVPR)},<br>
-                &nbsp;&nbsp;year&nbsp;=&nbsp;{2020},<br>
-                &nbsp;&nbsp;url &nbsp;= {https://arxiv.org/abs/1912.01734}<br>
-                }
-            </font></code>
-          </p>
+          <p class="card-text"> <code id="bib"><font color="black"> You are in the middle of a room. Looking quickly around  
+            you, you see a safe 1, a shelf 4, a drawer 2, a bed 1, a drawer 1, a shelf 5, a shelf 2, a sidetable 2, a shelf 3, a drawer 3, a shelf 1, a sidetable 1, a desk 1, and a garbagecan 1.&nbsp;</font></code></p>
+          <p class="card-text"><code><font color="black"><em>Your task is to: examine the alarmclock with the desklamp.&nbsp;</em></font></code></p>
+          <p class="card-text"><code><font color="black"><strong>&gt; go to desk 1 <br>
+            </strong> You arrive at loc 8. 
+            On the desk 1, you see a pen 1, a bowl 1, a alarmclock 2, a pencil 2, a pencil 3, a creditcard 3, a book 1, a alarmclock 3, a keychain 3, and a book 2.&nbsp;</font></code></p>
+          <p class="card-text"><code><font color="black"> <strong>&gt; take alarmclock 2 from desk 1 <br>
+          </strong> You pick up the alarmclock 2 from the desk 1.</font></code></p>
+          <p class="card-text"> <code><font color="black"> <strong>&gt; go to sidetable 2</strong><br>
+            <!--            <strong> &gt; go to sidetable 2 <br>-->
+            You arrive at loc 1. On the sidetable 2, you see a desklamp 1, a&nbsp;alarmclock 1.</font></code></p>
+          <p class="card-text"><code><font color="black">
+            <strong>&gt; use desklamp 1 <br>
+            </strong> You won!</font></code></p>
         </div>
       </div>
     </div>
@@ -336,10 +334,7 @@
 
 <footer class="container">
   <div id="groupContainer">
-      <img src="images/UW.jpg" class="groupLogo">
-      <img src="images/cmu.jpg" class="groupLogo">
-      <img src="images/AI2.png" class="groupLogo">
-      <img src="images/nvidia.jpg" class="groupLogo">
+      <img src="images/UW.jpg" class="groupLogo"><img src="images/microsoft.jpg" class="groupLogo"><img src="images/cmu.jpg" class="groupLogo">
   </div>
   <br>
   <p>Questions or issues?  Contact <a href="https://mohitshridhar.com/">Mohit Shridhar</a></p>.
