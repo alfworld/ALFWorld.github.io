@@ -86,3 +86,7 @@
     border:1px solid black;
     background:#e0e0e0;
 }
+
+.custom_button {
+    width: 250px !important;
+}

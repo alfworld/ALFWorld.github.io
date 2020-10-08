@@ -100,27 +100,17 @@
       var vid = null;
       var splits_names;
       var splits_sizes;
+	  var video_links;
+	  var text_games;
+	  var curr_vid_idx = 0;
 
       function load_data() {
-        $.getJSON('splits.json', function(jd) {
-          splits_data = jd;
-          training_size = jd.train.length;
-          val_s_size = jd.valid_seen.length;
-          val_u_size = jd.valid_unseen.length;
-          splits_names = ["train", "valid_seen", "valid_unseen"];
-          splits_sizes = [training_size, val_s_size, val_u_size];
-
-          vid = findGetParameter("vid");
-          if (vid == null) {
-            choose_example();
-          }
-          view_example();
-        });
+		  console.log("HERE")
+		  view_example();
       }
 
       function new_random_example() {
         captureOutboundLink('random');
-        choose_example();
         view_example();
       }
 
@@ -160,44 +150,31 @@
       function choose_example() {
         // Choose a random example.
         var s = Math.floor((Math.random() * 3));
-        var S = splits_names[s];
-        var I = splits_sizes[s];
-        var i = Math.floor((Math.random() * I));
-        vid = (training_size * s) + i;
+        vid = s;
       }
 
-      function view_example() {
-        $('#warning_retrieve_example').hide();
-        var s = Math.floor(vid / training_size);
-        var i = vid % training_size;
-        var S = splits_names[s];
-        var I = splits_sizes[s];
+      function view_example() {		  
+		video_links = ['look_at_obj_in_light-AlarmClock-None-DeskLamp-302/trial_T20190908_192756_298295/video.mp4',
+					   'pick_clean_then_place_in_recep-Tomato-None-CounterTop-25/trial_T20190909_012550_586494/video.mp4',
+					   'pick_and_place_simple-Vase-None-Safe-219/trial_T20190908_205246_776817/video.mp4']
+		text_games = [
+			'<font color="black"> You are in the middle of a room. Looking quickly around you, you see a safe 1, a shelf 4, a drawer 2, a bed 1, a drawer 1, a shelf 5, a shelf 2, a sidetable 2, a shelf 3, a drawer 3, a shelf 1, a sidetable 1, a desk 1, and a garbagecan 1.&nbsp; <br><br> Your task is to: <em>examine an alarmclock with the desklamp.</em>&nbsp;<br><br><strong>&gt; go to desk 1</strong> <br>You arrive at loc 8. On the desk 1, you see a pen 1, a bowl 1, a alarmclock 2, a pencil 2, a pencil 3, a creditcard 3, a book 1, a alarmclock 3, a keychain 3, and a book 2.<br><br> <strong>&gt; take alarmclock 2 from desk 1 <br> </strong> You pick up the alarmclock 2 from the desk 1.<br> <br><strong>&gt; go to sidetable 2</strong><br> You arrive at loc 1. On the sidetable 2, you see a desklamp 1, and an alarmclock 1.<br> <br> <strong>&gt; use desklamp 1 <br> </strong> You won! </font>', 
+			'<font color="black">You are in the middle of a room. Looking quickly around you, you see a microwave 1, a cabinet 3, a cabinet 9, a drawer 2, a coffeemachine 1, a stoveburner 4, a drawer 5, a cabinet 11, a drawer 3, a stoveburner 1, a drawer 1, a toaster 1, a fridge 1, a stoveburner 2, a cabinet 6, a cabinet 10, a countertop 1, a cabinet 13, a cabinet 7, a garbagecan 1, a cabinet 2, a cabinet 8, a cabinet 12, a drawer 4, a cabinet 1, a sinkbasin 1, a cabinet 5, a stoveburner 3, and a cabinet 4.&nbsp; <br><br>Your task is to: <em>clean some tomato and put it on countertop.</em>&nbsp;<br><br><strong>&gt; go to fridge 1 <br> </strong>You arrive at loc 7. The fridge 1 is closed.<br><br><strong>&gt; open fridge 1 <br> </strong>You open the fridge 1. The fridge 1 is open. In it, you see a egg 1, a mug 1, a tomato 1, a lettuce 2, a lettuce 1, a bowl 1, a mug 2, and a potato 1.<br><br><strong>&gt; take tomato 1 from fridge 1 <br> </strong>You pick up the tomato 1 from the fridge 1.<br><br><strong>&gt; go to sinkbasin 1 <br> </strong>You arrive at loc 14. On the sinkbasin 1, you see a fork 2.<br><br><strong>&gt; clean tomato 1 with sinkbasin 1 <br> </strong>You clean the tomato 1 using the sinkbasin 1.<br><br><strong>&gt; go to countertop 1 <br> </strong>You arrive at loc 26. On the countertop 1, you see a fork 1, a pan 1, a saltshaker 2, a mug 3, a peppershaker 2, a dishsponge 1, a spoon 2, a butterknife 1, a knife 1, a saltshaker 1, a soapbottle 1, and a bread 1.<br><br><strong>&gt; put tomato 1 in/on countertop 1 <br> </strong>You won!</font>', 
+			'<font color="black">You are in the middle of a room. Looking quickly around you, you see a drawer 2, a shelf 5, a drawer 1, a shelf 4, a sidetable 1, a drawer 5, a shelf 6, a shelf 1, a shelf 9, a cabinet 2, a sofa 1, a cabinet 1, a shelf 3, a cabinet 3, a drawer 3, a shelf 11, a shelf 2, a shelf 10, a dresser 1, a shelf 12, a garbagecan 1, a armchair 1, a cabinet 4, a shelf 7, a shelf 8, a safe 1, and a drawer 4.&nbsp; <br><br>Your task is to: <em>put some vase in safe.</em>&nbsp;<br><br><strong>&gt; go to shelf 6 <br> </strong>You arrive at loc 4. On the shelf 6, you see a vase 2.<br><br><strong>&gt; take vase 2 from shelf 6 <br> </strong>You pick up the vase 2 from the shelf 6.<br><br><strong>&gt; go to safe 1 <br> </strong>You arrive at loc 3. The safe 1 is closed.<br><br><strong>&gt; open safe 1 <br> </strong>You open the safe 1. The safe 1 is open. In it, you see a keychain 3.<br><br><strong>&gt; put vase 2 in/on safe 1 <br> </strong>You won!</font>']
+		
+		curr_vid_idx = (curr_vid_idx + 1) % video_links.length
+        var s = Math.floor(curr_vid_idx);
 
         // Show video.
         var video = document.getElementById('expert_video');
         // video.src = "https://mturk.jessethomason.com/lang_2_plan/2.1.0/" + splits_data[S][i]["task"] + "/video.mp4";
-        video.src = "https://ai2-vision-alfred-data-explorer.s3-us-west-2.amazonaws.com/" + splits_data[S][i]["task"] + "/video.mp4";
+        video.src = "https://ai2-vision-alfred-data-explorer.s3-us-west-2.amazonaws.com/" + video_links[s];
         video.playbackRate = 2;
         video.defaultPlaybackRate = 2;
-        video.play();
-
-        // Retrieve text from JSON.
-        var aidx = splits_data[S][i]["repeat_idx"];
-        var traj_json_url = "https://raw.githubusercontent.com/askforalfred/alfred/master/data/json_2.1.0/" + S + "/" + splits_data[S][i]["task"] + "/traj_data.json";
-        $.getJSON(traj_json_url, function(jd) {
-          // Populate high and low level text.
-          $('#highlevel').html(jd.turk_annotations.anns[aidx].task_desc);
-          $('#lowlevel').html(jd.turk_annotations.anns[aidx].high_descs.join("<br/>"));
-        });
-
-        // Populate retrieval field with video ID.
-        $('#input_retrieve_example').val(splits_data[S][i]["task"] + "." + aidx);
-
-        // Get plink
-        var url_whole = window.location.href;
-        var res = url_whole.split("?");
-        var url_base = res[0];
-        $('#plink').html(url_base + "?vid=" + vid);
+//        video.play();
+		  
+		console.log(text_games[s])
+		document.getElementById('textgame').innerHTML = text_games[s];
       }
 
     </script>
@@ -211,7 +188,7 @@
   </head>
 
 
-  <body onload="load_data()" style="padding-top: 0px;">
+  <body onload="view_example()" style="padding-top: 0px;">
   <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #029b9e;">
       <a class="navbar-brand" href="#">ALFWorld </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
@@ -269,25 +246,36 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3 d-flex justify-content-center align-items-top">
-     <iframe width="250" height="250" id="ytVid" src="https://ai2-vision-alfred-data-explorer.s3-us-west-2.amazonaws.com/look_at_obj_in_light-AlarmClock-None-DeskLamp-302/trial_T20190908_192756_298295/video.mp4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	 <p>
+     <iframe width="250" height="250" id="expert_video" src="https://ai2-vision-alfred-data-explorer.s3-us-west-2.amazonaws.com/look_at_obj_in_light-AlarmClock-None-DeskLamp-302/trial_T20190908_192756_298295/video.mp4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+		 <br>
+	 <a class="btn btn-warning btn-lg custom_button" onclick="new_random_example()">Next Example</a>
+	</p>
     </div>
     <div class="col-sm-6 d-flex justify-content-left col-xl-9">
       <div class="card bg-light">
         <div class="card-body">
-          <p class="card-text"> <code id="bib"><font color="black"> You are in the middle of a room. Looking quickly around  
-          you, you see a safe 1, a shelf 4, a drawer 2, a bed 1, a drawer 1, a shelf 5, a shelf 2, a sidetable 2, a shelf 3, a drawer 3, a shelf 1, a sidetable 1, a desk 1,  a garbagecan 1.&nbsp;</font></code></p>
-          <p class="card-text"><code><font color="black">Your task is to: <em>examine an alarmclock with the desklamp.</em>&nbsp;</font></code></p>
-          <p class="card-text"><code><font color="black"><strong>&gt; go to desk 1 <br>
-            </strong> You arrive at loc 8. 
-            On the desk 1, you see a pen 1, a bowl 1, a alarmclock 2, a pencil 2, a pencil 3, a creditcard 3, a book 1, a alarmclock 3, a keychain 3, and a book 2.&nbsp;</font></code></p>
-          <p class="card-text"><code><font color="black"> <strong>&gt; take alarmclock 2 from desk 1 <br>
-          </strong> You pick up the alarmclock 2 from the desk 1.</font></code></p>
-          <p class="card-text"> <code><font color="black"> <strong>&gt; go to sidetable 2</strong><br>
-            <!--            <strong> &gt; go to sidetable 2 <br>-->
-            You arrive at loc 1. On the sidetable 2, you see a desklamp 1, a&nbsp;alarmclock 1.</font></code></p>
-          <p class="card-text"><code><font color="black">
-            <strong>&gt; use desklamp 1 <br>
-            </strong> You won!</font></code></p>
+          <p class="card-text"> 
+		  <code id="textgame">
+			  <font color="black"> 
+			  You are in the middle of a room. Looking quickly around 
+			  you, you see a safe 1, a shelf 4, a drawer 2, a bed 1, a drawer 1, a shelf 5, a shelf 2, a sidetable 2, a shelf 3, a drawer 3, a shelf 1, a sidetable 1, a desk 1,  a garbagecan 1.&nbsp; <br>
+			  <br>
+			  Your task is to: <em>examine an alarmclock with the desklamp.</em>&nbsp;<br>
+			  <br>
+			  <strong>&gt; go to desk 1</strong> <br>
+			  You arrive at loc 8. 
+			  On the desk 1, you see a pen 1, a bowl 1, a alarmclock 2, a pencil 2, a pencil 3, a creditcard 3, a book 1, a alarmclock 3, a keychain 3, and a book 2.<br>
+			  <br>
+			  <strong>&gt; take alarmclock 2 from desk 1 <br>
+			  </strong> You pick up the alarmclock 2 from the desk 1.<br>
+			  <br><strong>&gt; go to sidetable 2</strong><br>
+			  You arrive at loc 1. On the sidetable 2, you see a desklamp 1, and an alarmclock 1.<br>
+			  <br>
+			  <strong>&gt; use desklamp 1 <br>
+			  </strong> You won!
+			  </font>
+		</code></p>
         </div>
       </div>
     </div>
@@ -352,9 +340,9 @@
 		  <div class="card bg-light" style="width: 40rem;">
 			<div class="card-body">
 			  <p class="card-text"> <code id="cite"><font color="black"> 
-			  @inproceedings{BUTLER20, <br>
-			     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title ={{BUTLER: Building Understanding in TextWorld <br>
-				 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;via Language for Embodied Reasoning}}, <br>
+			  @inproceedings{ALFWorld20, <br>
+			     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title ={{ALFWorld: Aligned Text and Embodied <br>
+				 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Environments for Interactive Learning}}, <br>
 			     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;author={Mohit Shridhar and Xingdi Yuan and <br>
 				 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Marc-Alexandre Côté and Yonatan Bisk and <br>
 				 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adam Trischler and Matthew Hausknecht}, <br>
